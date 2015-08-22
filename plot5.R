@@ -10,6 +10,10 @@ SCC <- readRDS("./exdata-data-NEI_data/Source_Classification_Code.rds")
 
 # Inspecting the names of the EI.Sector in SCC, the word "Mobile" indicates
 # motor vehicles, we filter the rows that contain it
+# This will include both road and non-road vehicles. It will also contain some
+# mobile source like lawn mowers, which are not motor vehicles. However, their
+# contribution is minimal and the influence in the exploratory graph is
+# negligible
 library(dplyr)
 SCC_mobile <- SCC %>%
         select(SCC, EI.Sector) %>% # Only keep the columns we will use
